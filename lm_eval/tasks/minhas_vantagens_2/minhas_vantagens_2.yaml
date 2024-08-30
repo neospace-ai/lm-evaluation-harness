@@ -1,0 +1,17 @@
+task: minhas_vantagens_2
+dataset_path: csv
+dataset_name: null
+dataset_kwargs:
+  data_files: /cortex/datasets/new_datasets/minhas_vantagens_po/v0/pretrain/validation/type2/mv_validation_type_2_easy_v0.csv
+validation_split: train
+test_split: null
+output_type: multiple_choice
+doc_to_text: "{{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nAnswer:"
+doc_to_choice: ["A", "B", "C", "D"]
+doc_to_target: answer
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
