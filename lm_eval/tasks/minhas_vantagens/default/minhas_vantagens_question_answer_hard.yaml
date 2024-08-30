@@ -1,0 +1,7 @@
+task: minhas_vantagens_question_answer_hard
+dataset_path: csv
+dataset_name: null
+dataset_kwargs:
+  data_files: /cortex/datasets/new_datasets/minhas_vantagens_po/v0/pretrain/validation/type2/mv_validation_type_2_hard_v0.csv
+metadata:
+  version: 1.0

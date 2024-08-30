@@ -1,0 +1,16 @@
+group: minhas_vantagens_question_answer
+group_alias: mv_type_2_question_answer
+task:
+  - minhas_vantagens_question_answer_easy
+  - minhas_vantagens_question_answer_medium
+  - minhas_vantagens_question_answer_hard
+test_split: train
+output_type: multiple_choice
+doc_to_text: "Question: {{question}}\nAnswer: {{answer}}\nPlausible:"
+doc_to_target: eval
+doc_to_choice: ["no", "yes"]
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True
+metadata:
+  version: 1.0

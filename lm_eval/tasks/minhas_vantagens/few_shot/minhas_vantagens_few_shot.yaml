@@ -1,0 +1,10 @@
+group: minhas_vantagens_few_shot
+task:
+  - minhas_vantagens_few_shot_question
+  - minhas_vantagens_few_shot_question_answer
+  # - minhas_vantagens_few_shot_multiple_choice
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True
+metadata:
+  version: 1
