@@ -2,6 +2,6 @@ task: minhas_vantagens_few_shot_multiple_choice_hard
 dataset_path: csv
 dataset_name: null
 dataset_kwargs:
-  data_files: /cortex/datasets/new_datasets/minhas_vantagens_po/v0/pretrain/validation/type3/mv_val_hard.csv
+  data_files: /cortex/datasets/new_datasets/minhas_vantagens_po/v0/pretrain/validation/type3/mv_val_hard_new.csv
 metadata:
   version: 1.0
