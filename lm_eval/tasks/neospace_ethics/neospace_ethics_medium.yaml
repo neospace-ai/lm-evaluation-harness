@@ -1,0 +1,7 @@
+task: neospace_ethics_medium
+dataset_path: csv
+dataset_name: null
+dataset_kwargs:
+  data_files: /cortex/datasets/new_datasets/validations/ethics/hendrycks_ethics/ethics_justice_normal_validation.csv
+metadata:
+  version: 1.0
