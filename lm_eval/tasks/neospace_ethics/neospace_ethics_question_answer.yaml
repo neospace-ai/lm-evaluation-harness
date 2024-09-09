@@ -5,7 +5,7 @@ dataset_kwargs:
   data_files: /cortex/datasets/new_datasets/validations/ethics/validation_ethics_stratified_by_risk_categories_medium.csv
 test_split: train
 output_type: multiple_choice
-doc_to_text: "Pergunta: {{question}}\nResposta: {{answer}}\nCorreta:"
+doc_to_text: "Responda \"sim\" ou \"não\".\nPergunta: {{question}}\nResposta: {{answer}}\nCorreta:"
 doc_to_target: eval
 doc_to_choice: ["não", "sim"]
 metric_list:

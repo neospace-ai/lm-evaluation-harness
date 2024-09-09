@@ -7,7 +7,7 @@ task:
 test_split: train
 num_fewshot: 5
 output_type: multiple_choice
-doc_to_text: "Pergunta: {{question}}\nResposta:"
+doc_to_text: "Responda \"sim\" ou \"não\".\nPergunta: {{question}}\nResposta:"
 doc_to_target: eval
 doc_to_choice: ["não", "sim"]
 aggregate_metric_list:
