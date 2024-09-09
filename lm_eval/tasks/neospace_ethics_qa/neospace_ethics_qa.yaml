@@ -1,4 +1,4 @@
-task: neospace_ethics_question_answer
+task: neospace_ethics_qa
 dataset_path: csv
 dataset_name: null
 dataset_kwargs:
