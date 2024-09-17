@@ -1,0 +1,7 @@
+task: minhas_vantagens_human_clearing
+dataset_path: csv
+dataset_name: null
+dataset_kwargs:
+  data_files: /cortex/datasets/new_datasets/validations/minhas_vantagens/type_3/train/melhores_respostas/unclear.csv
+metadata:
+  version: 1.0

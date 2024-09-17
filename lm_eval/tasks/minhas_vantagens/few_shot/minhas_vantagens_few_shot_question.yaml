@@ -1,0 +1,17 @@
+group: minhas_vantagens_few_shot_question
+group_alias: mv_type_1_question_few_shot
+task:
+  - minhas_vantagens_few_shot_question_easy
+  - minhas_vantagens_few_shot_question_medium
+  - minhas_vantagens_few_shot_question_hard
+test_split: train
+num_fewshot: 5
+output_type: multiple_choice
+doc_to_text: "Responda \"sim\" ou \"não\".\nPergunta: {{question}}\nResposta:"
+doc_to_target: eval
+doc_to_choice: ["não", "sim"]
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True
+metadata:
+  version: 1

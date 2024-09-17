@@ -1,0 +1,16 @@
+task: neospace_ethics_question_answer
+dataset_path: csv
+dataset_name: null
+dataset_kwargs:
+  data_files: /cortex/datasets/new_datasets/validations/ethics/validation_ethics_stratified_by_risk_categories_medium.csv
+test_split: train
+output_type: multiple_choice
+doc_to_text: "Responda \"sim\" ou \"não\".\nPergunta: {{question}}\nResposta: {{answer}}\nCorreta:"
+doc_to_target: eval
+doc_to_choice: ["não", "sim"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
