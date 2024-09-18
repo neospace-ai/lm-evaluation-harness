@@ -1,0 +1,7 @@
+task: minhas_vantagens_multiple_choice_beneficio
+dataset_path: csv
+dataset_name: null
+dataset_kwargs:
+  data_files: /cortex/datasets/new_datasets/validations/minhas_vantagens/type_3/train/by_subject/mv_val_type_3_new_beneficio.csv
+metadata:
+  version: 1.0

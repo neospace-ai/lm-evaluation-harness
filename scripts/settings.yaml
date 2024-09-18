@@ -1,0 +1,33 @@
+# launch.json to DEBUG:
+
+# {
+#   "name": "Eval Model",
+#   "type": "debugpy",
+#   "request": "launch",
+#   "program": "${file}",
+#   "console": "integratedTerminal",
+#   "args": [
+#       "--settings_path",
+#       "scripts/settings.yaml",
+#   ],
+#   "justMyCode": false,
+#   "purpose": [
+#       "debug-in-terminal"
+#   ]
+# }
+
+# RUN:
+
+# python scripts/eval_model.py --settings_path scripts/settings.yaml
+
+lm_eval_settings:
+  autorization_token: "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJzTjJsWV8wUkhhdll1NEVmS21MZWJ4TmpzODhzNFdHUzZvQmV1UFRjVzhFIn0.eyJleHAiOjE3MjY2NzkwMjcsImlhdCI6MTcyNjY2MTAyNywianRpIjoiNWIzYmY5M2MtYWEwNi00Y2QzLWJkOTQtMThjYjFiNTY3MmU5IiwiaXNzIjoiaHR0cHM6Ly9hdXRoLmRldi5uZW9zcGFjZS5haS9yZWFsbXMvbmVvc3BhY2UiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMGZjYzVhYTktZWUzYS00ZWI4LTk3ZGQtZDJmYzYzYWU4M2M4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiMTVkMjBjMGMtMTJmYy00ZDg0LTg4YjQtY2ZkNzVmZDA3Mzc1Iiwic2lkIjoiNWU5MjlmZGQtM2FlZC00MDFmLWEzY2ItNmZhZTNjMTQyODFlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwMDAvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1uZW9zcGFjZSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IklzYWFjIGNhbWFyZ29zIiwic3BhY2VzIjoiW1wiYTg3YzA5YjgtMmIyOC00NmY5LTlhNDAtMGViYTkzZjA4MzBiXCJdIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiaXNhYWNAbmVvc3BhY2UuYWkiLCJnaXZlbl9uYW1lIjoiSXNhYWMiLCJmYW1pbHlfbmFtZSI6ImNhbWFyZ29zIiwiZW1haWwiOiJpc2FhY0BuZW9zcGFjZS5haSJ9.Mh9zk1KOmxP1woYPDMeaLg0sRxDZRy65-bqzBma9PEPz_HNqIQrETzBgHExjaM7BiyL3DQ91qAP5h0xPgqA87F2dPTd0ZfwA-KSiG0S4dnn8w-YhBMBt3tOvXj_dnXGqQvXT80RYQXJDXMTm73BBv8PShBJLTdGTBxF-PbzaWycI0v0tClx5Zis35X3TicL5tiA0lgA3KRRBo2AtDmej27VSVVZ6f0ABlXsPYN2XnBkYwrYOmIkM08rjpy8FvLEOAVKYM_mBvm1XzCZlmytyqBtfTHv9lK3LvZccPp33AZGjqBrKDMKZqFAfGaT-fkjOJ-WJXM1Fz8un23JkY4ZIsg"
+  url: "https://portal.api.dev.neospace.ai/mercury/v2/spaces/a87c09b8-2b28-46f9-9a40-0eba93f0830b/models"
+  model_checkpoint: "/cortex-cycles/neolang-pre-8b-large-data-eval-test/executions/3364c614-ed11-4ed6-b993-2058a238c931/jobs/neolang-pre-8b-large-data-eval-test/epoch_000002_step_000008" # "/cortex/outputs/finetuning/tests-joao/train-llama8B-from-cosine_annealing/checkpoints/epoch_000006" # "/cortex-cycles/neolang-pre-8b-large-data-eval-test/executions/3364c614-ed11-4ed6-b993-2058a238c931/jobs/neolang-pre-8b-large-data-eval-test/epoch_000002_step_000010"
+  model: "local-completions"
+  model_name: 'eval-test-4'
+  tasks: "minhas_vantagens"
+  output_path: "results/{model_name}" 
+  num_concurrent: 20
+  max_retries: 3
+  tokenized_requests: false
