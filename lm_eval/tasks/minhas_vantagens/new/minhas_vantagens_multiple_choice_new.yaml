@@ -1,0 +1,22 @@
+group: minhas_vantagens_multiple_choice_new
+group_alias: mv_type_3_multiple_choice
+task:
+  - minhas_vantagens_multiple_choice_beneficio
+  - minhas_vantagens_multiple_choice_produto
+  - minhas_vantagens_multiple_choice_complex
+  - minhas_vantagens_multiple_choice_passos_to_beneficios
+  - minhas_vantagens_multiple_choice_passos_to_nivel
+  - minhas_vantagens_multiple_choice_beneficios_to_passos
+  - minhas_vantagens_multiple_choice_beneficios_to_nivel
+  - minhas_vantagens_multiple_choice_nivel_to_beneficios
+  - minhas_vantagens_multiple_choice_nivel_to_passos
+test_split: train
+output_type: multiple_choice
+doc_to_text: "{{question.strip()}}\nA. {{choice_A}}\nB. {{choice_B}}\nC. {{choice_C}}\nD. {{choice_D}}\nAnswer:"
+doc_to_choice: ["A", "B", "C", "D"]
+doc_to_target: answer
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True
+metadata:
+  version: 1
