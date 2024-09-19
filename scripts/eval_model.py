@@ -1,6 +1,5 @@
 import requests
 import yaml
-import sys
 import fire
 import os
 import json
@@ -206,8 +205,8 @@ def main(settings_path):
         task = tasks[index]
         metric = metrics[index]
         metric_filter = metrics_filter[index]
-        # for checkpoint in model_checkpoint:
-        #     eval_model(settings_path, checkpoint, task, metric, metric_filter)
+        for checkpoint in model_checkpoint:
+            eval_model(settings_path, checkpoint, task, metric, metric_filter)
     
 
         all_files = os.listdir(settings['output_path'] + 'temp')

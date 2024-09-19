@@ -32,20 +32,20 @@ lm_eval_settings:
   model: "local-completions"
   model_name: 'eval-test'
   tasks: 
-    #- "minhas_vantagens_gsm8k"
+    - "minhas_vantagens_gsm8k"
     - "minhas_vantagens"
-    #- "minhas_vantagens_multiple_choice_new"
-    #- "minhas_vantagens_human"
+    - "minhas_vantagens_multiple_choice_new"
+    - "minhas_vantagens_human"
   metrics: 
-    #- "exact_match"
+    - "exact_match"
     - "acc"
-    #- "acc"
-    #- "acc"
+    - "acc"
+    - "acc"
   metrics_filter: 
-    #- "flexible-extract"
+    - "flexible-extract"
     - "none"
-    #- "none"
-    #- "none"
+    - "none"
+    - "none"
   output_path: "results/" 
   num_concurrent: 20  
   max_retries: 3
