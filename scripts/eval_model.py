@@ -64,6 +64,7 @@ def preprocess_result(settings, model_path, model_checkpoint, output_path, metri
                 if category in df['doc'].iloc[0].keys():
                     df_clean.loc[:, 'category'] = df['doc'].apply(lambda x: x[category])
             
+            
             os.makedirs(output_path_save + 'temp_df', exist_ok=True)
             df_clean.to_csv(output_path_save + 'temp_df/' + str(random.randint(10000, 999999)) + '.csv', index=False)
 
@@ -75,7 +76,7 @@ def preprocess_result(settings, model_path, model_checkpoint, output_path, metri
             json_dict.append({'name': task, metric: results['results'][task].get(f"{metric},{metric_filter}", None), f'{metric}_std': results['results'][task].get(f'{metric}_stderr,{metric_filter}', None)})
         
         df = pd.DataFrame(json_dict)
-        df['category'] = df['category'].map('{:.4f}'.format) + ' +- ' + df[f'{metric}_std'].map('{:.4f}'.format)
+        df['category'] = df[metric].map('{:.4f}'.format) + ' +- ' + df[f'{metric}_std'].map('{:.4f}'.format)
         df = df.set_index('name')['category'].to_frame().T.reset_index(drop=True)
         df.index.name = None
         df['model_checkpoint'] = model_checkpoint
@@ -85,7 +86,8 @@ def preprocess_result(settings, model_path, model_checkpoint, output_path, metri
     if delete_result_after_preprocess:
         os.system(f'rm -r {output_path + model_path}')
 
-def postprocess_result(df):
+def postprocess_result(df, metric):
+    df.category = df.category.fillna('None')
     target_type = df['target'].apply(lambda x: type(x)).iloc[0]
     
     unique_category = df['category'].unique()
@@ -102,10 +104,10 @@ def postprocess_result(df):
                 mean_squared_error = df_temp['diff'].apply(lambda x: x**2).mean()
                 mean_absolute_error_std = df_temp['diff'].apply(lambda x: abs(x)).std()
                 mean_squared_error_std = df_temp['diff'].apply(lambda x: x**2).std()
-                accuracy = df_temp['exact_match'].mean()
+                accuracy = df_temp[metric].mean()
                 json_lines.append({'category': category, 'model_checkpoint': model, 'mean_absolute_error': mean_absolute_error, 'mean_squared_error': mean_squared_error, 'mean_absolute_error_std': mean_absolute_error_std, 'mean_squared_error_std': mean_squared_error_std, 'accuracy': accuracy})
             elif target_type == str:
-                accuracy = df_temp['exact_match'].mean()
+                accuracy = df_temp[metric].mean()
                 json_lines.append({'category': category, 'model_checkpoint': model, 'accuracy': accuracy})
 
     return pd.DataFrame(json_lines)
@@ -204,8 +206,8 @@ def main(settings_path):
         task = tasks[index]
         metric = metrics[index]
         metric_filter = metrics_filter[index]
-        for checkpoint in model_checkpoint:
-            eval_model(settings_path, checkpoint, task, metric, metric_filter)
+        # for checkpoint in model_checkpoint:
+        #     eval_model(settings_path, checkpoint, task, metric, metric_filter)
     
 
         all_files = os.listdir(settings['output_path'] + 'temp')
@@ -214,7 +216,7 @@ def main(settings_path):
         df_concat_raw = pd.concat([pd.read_csv(settings['output_path'] + 'temp_df/' + file) for file in all_files_raw])
         df_concat_raw = df_concat_raw.rename({'flux': 'category'}, axis=1)
 
-        df_metrics = postprocess_result(df_concat_raw)
+        df_metrics = postprocess_result(df_concat_raw, metric)
 
         name_file = generate_unique_filename(settings['output_path'], task)
         df_concat.to_csv(name_file, index=False)
