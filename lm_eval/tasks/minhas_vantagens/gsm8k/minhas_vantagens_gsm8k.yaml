@@ -1,0 +1,10 @@
+group: minhas_vantagens_gsm8k
+task:
+  - minhas_vantagens_gsm8k_alike_next_level_sampled_small
+  - minhas_vantagens_gsm8k_alike_not_next_level_int_sampled_small
+  - minhas_vantagens_gsm8k_alike_not_next_level_not_int_sampled_small
+aggregate_metric_list:
+  - metric: exact_match
+    aggregation: mean
+metadata:
+  version: 1
